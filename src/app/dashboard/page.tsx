@@ -15,7 +15,7 @@ import { funcType } from "@/types/deleteMsgsFuncType"
 
 
 
-const page = () => {
+const Page = () => {
     const { data: session, status } = useSession()
     const [messages, setMessages] = useState<MessageType[]>([{
         createdAt: new Date(),
@@ -164,7 +164,7 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
 
 
 

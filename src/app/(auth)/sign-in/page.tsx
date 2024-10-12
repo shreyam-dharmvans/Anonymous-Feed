@@ -26,7 +26,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Result } from 'postcss';
 
 
-const page = () => {
+const Page = () => {
     const router = useRouter();
     const { toast } = useToast();
     // const usernameRef = useRef(null);
@@ -150,7 +150,7 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
 
 // {
 //   "$schema": "https://ui.shadcn.com/schema.json",

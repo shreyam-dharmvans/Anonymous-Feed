@@ -11,7 +11,7 @@ import axios, { AxiosError } from 'axios';
 import { apiResponse } from '@/types/apiResponse';
 import { useToast } from '@/hooks/use-toast';
 
-const page = () => {
+const Page = () => {
     let { username } = useParams()
     let { toast } = useToast()
 
@@ -128,7 +128,7 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
 
 
 const words = [

@@ -31,7 +31,7 @@ import { useDebounceCallback } from 'usehooks-ts'
 
 
 
-const page = () => {
+const Page = () => {
     const router = useRouter();
     const { toast } = useToast();
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -190,4 +190,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
