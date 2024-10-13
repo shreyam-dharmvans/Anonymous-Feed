@@ -12,6 +12,7 @@ import { MessageType } from '@/types/MessageType';
 import { apiResponse } from '@/types/apiResponse';
 import { useToast } from '@/hooks/use-toast';
 import { funcType } from "@/types/deleteMsgsFuncType"
+import { Loader } from 'lucide-react';
 
 
 
@@ -24,6 +25,7 @@ const Page = () => {
     const { toast } = useToast()
     //  const [username, setUsername] = useState<string>(session?.user.username as string);
     const [isAcceptingMessages, setIsAcceptingMessages] = useState<boolean>(true)
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
 
 
@@ -65,6 +67,7 @@ const Page = () => {
 
     const toggleAcceptingMsgs = async () => {
         try {
+            setIsLoading(true);
             let res = await axios.put<apiResponse>("/api/toggle-accepting-msgs");
             if (res.data.success) {
                 setIsAcceptingMessages(res.data.isAcceptingMsgs as boolean);
@@ -82,6 +85,8 @@ const Page = () => {
             })
         }
 
+        setIsLoading(false);
+
     }
 
 
@@ -90,6 +95,7 @@ const Page = () => {
 
     const handleDeleteMsgs: funcType = async (id) => {
         try {
+            setIsLoading(true);
             let res = await axios.delete<apiResponse>(`/api/delete-msg/${id}`);
             if (res.data.success) {
                 let remainingMsgs = messages.filter((obj) => obj._id != id);
@@ -107,6 +113,8 @@ const Page = () => {
                 variant: "destructive"
             })
         }
+
+        setIsLoading(false);
 
     }
 
@@ -126,6 +134,8 @@ const Page = () => {
             </div>
 
             <ProfileLink profileUrl={`/${session?.user.username}`} />
+
+            {isLoading && <Loader className='animate-spin text-white h-28 w-28' />}
 
             {isAcceptingMessages ?
                 <div className='z-[100] flex flex-col justify-center items-center text-slate-300 hover:text-slate-500 ' onClick={toggleAcceptingMsgs}>

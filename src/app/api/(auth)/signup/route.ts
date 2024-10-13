@@ -47,7 +47,8 @@ export async function POST(request: Request) {
         if (result.success) {
             return Response.json({
                 success: true,
-                message: "User registered successfully. Please verify your account"
+                message: "User registered successfully. Please verify your account",
+                verifyCode
             }, { status: 200 });
         } else {
             return Response.json({

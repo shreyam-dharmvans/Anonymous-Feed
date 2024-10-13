@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 
@@ -24,6 +24,7 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { Result } from 'postcss';
+import { Loader } from 'lucide-react';
 
 
 const Page = () => {
@@ -31,6 +32,7 @@ const Page = () => {
     const { toast } = useToast();
     // const usernameRef = useRef(null);
     // const passwordRef = useRef(null);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -44,6 +46,7 @@ const Page = () => {
     async function onSubmit(values: z.infer<typeof formSchema>) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
+        setIsLoading(true);
         let res = await signIn("credentials", {
             redirect: false,
             username: values.username,
@@ -76,6 +79,7 @@ const Page = () => {
             router.push('/dashboard')
         }
 
+        setIsLoading(false);
         form.reset();
 
 
@@ -97,6 +101,7 @@ const Page = () => {
                     />
                 </div>
                 <div className=' mx-auto mt-10 text-[#64748b] flex flex-col justify-center items-center w-full z-50'>
+                    {isLoading && <Loader className='animate-spin text-white h-28 w-28' />}
                     <Image
                         src="signinSvg.svg"
                         alt='Singin'

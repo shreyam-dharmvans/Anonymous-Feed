@@ -78,7 +78,7 @@ const Page = () => {
                 router.push(`/verify/${values.username}`);
                 toast({
                     title: "Signup Successfull",
-                    description: result.data.message,
+                    description: `Please verify that you are human.\n Enter verify code : ${result.data.verifyCode}. \n Code will also be sent to your email within 30 minutes.`,
                 })
             }
 

@@ -16,6 +16,7 @@ import * as React from "react";
 interface VerifyEmailProps {
   username: string;
   verificationCode: number;
+  email: string;
 }
 
 const baseUrl = process.env.VERCEL_URL
@@ -25,6 +26,7 @@ const baseUrl = process.env.VERCEL_URL
 export default function VerifyEmail({
   username,
   verificationCode,
+  email
 }: VerifyEmailProps) {
   return (
     <Html>
@@ -42,7 +44,7 @@ export default function VerifyEmail({
               />
             </Section>
             <Section style={upperSection}>
-              <Heading style={h1}>Verify your email address</Heading>
+              <Heading style={h1}>Verify Code for {email}</Heading>
               <Text style={mainText}>
                 Hi {username},
                 Thanks for starting the new account creation process. We

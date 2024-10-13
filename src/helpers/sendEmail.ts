@@ -8,9 +8,9 @@ export const sendEmail = async (email: string, username: string, verificationCod
     try {
         const { data, error } = await resend.emails.send({
             from: 'Acme <onboarding@resend.dev>',
-            to: [email],
+            to: [process.env.EMAIL as string],
             subject: 'Verification code to verify Anonymous Feed account',
-            react: VerifyEmail({ username, verificationCode }),
+            react: VerifyEmail({ username, verificationCode, email }),
         });
 
         if (error) {
@@ -32,4 +32,4 @@ export const sendEmail = async (email: string, username: string, verificationCod
             message: "Failed to send Verification code"
         };
     }
-}
+} 

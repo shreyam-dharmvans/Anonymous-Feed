@@ -1,6 +1,6 @@
 "use client";
 import { SparklesCore } from '@/components/ui/sparkles'
-import React from 'react'
+import React, { useState } from 'react'
 import { PinContainer } from "@/components/ui/3d-pin";
 import { TypewriterEffectSmooth } from '@/components/ui/typewriter-effect';
 import { LiaUserSecretSolid } from 'react-icons/lia';
@@ -10,14 +10,18 @@ import { useParams } from 'next/navigation';
 import axios, { AxiosError } from 'axios';
 import { apiResponse } from '@/types/apiResponse';
 import { useToast } from '@/hooks/use-toast';
+import { Loader } from 'lucide-react';
 
 const Page = () => {
     let { username } = useParams()
     let { toast } = useToast()
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
 
     const handleOnClick = () => {
-        navigator.clipboard.writeText(`/${username}`);
+        let baseUrl = `${window.location.protocol}//${window.location.host}`;
+        navigator.clipboard.writeText(baseUrl + "/send-msg/" + `${username}`);
+        // navigator.clipboard.writeText(`/${username}`);
         toast({
             title: "Copied",
             description: "Url copied to clipboard"
@@ -40,6 +44,7 @@ const Page = () => {
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>, val: string) => {
         e.preventDefault();
         try {
+            setIsLoading(true);
             let res = await axios.post<apiResponse>(`/api/send-msg/${username}`, { message: val });
             if (res.data.success) {
                 toast({
@@ -56,7 +61,7 @@ const Page = () => {
             })
         }
 
-
+        setIsLoading(false);
         console.log("submitted");
     };
 
@@ -108,6 +113,8 @@ const Page = () => {
                 <LiaUserSecretSolid className='h-16 w-16 ' />
                 {/* <div className=''>Accepting Messages</div> */}
             </div>
+
+            {isLoading && <Loader className='animate-spin text-white h-28 w-28' />}
 
 
             <div className="h-[40rem] flex flex-col justify-center w-full items-center px-4">

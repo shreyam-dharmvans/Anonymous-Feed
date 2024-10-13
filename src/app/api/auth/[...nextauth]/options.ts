@@ -75,7 +75,7 @@ export const authOptions: NextAuthOptions = {
 
             }
         })
-        // ...add more providers here
+        // ...add more providers here 
 
     ],
     callbacks: {
