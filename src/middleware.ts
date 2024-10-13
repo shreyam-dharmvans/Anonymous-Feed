@@ -4,7 +4,7 @@ import { NextRequest } from 'next/server'
 
 
 export async function middleware(request: NextRequest) {
-    let token = await getToken({ req: request })
+    let token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET })
     //  console.log(token)
     let url = request.nextUrl;
     //  console.log(url)
@@ -34,5 +34,5 @@ export async function middleware(request: NextRequest) {
 
 
 export const config = {
-    matcher: '/:path*',
+    matcher: ['/dashboard/:path*', '/sign-up', '/verify/:path*', '/sign-in']
 }
