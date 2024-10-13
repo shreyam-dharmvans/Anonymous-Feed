@@ -71,12 +71,13 @@ const Page = () => {
             }
 
         } else {
-            router.replace("/dashboard");
+            // router.replace("/dashboard");
             toast({
                 title: "SignIn Successful",
                 description: "User successfully signedin",
             })
-            // router.push('/dashboard')
+
+            router.push('/dashboard')
         }
 
         setIsLoading(false);
