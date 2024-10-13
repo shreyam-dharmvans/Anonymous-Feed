@@ -73,7 +73,7 @@ function InputOTPForm() {
             if (res.data.message == "User is verified successfully") {
                 router.push("/sign-in");
                 toast({
-                    title: "Verification successfuld",
+                    title: "Verification successfull",
                     description: res.data.message
                 })
             }

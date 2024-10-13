@@ -75,7 +75,7 @@ const Page = () => {
             router.push('/dashboard')
             toast({
                 title: "SignIn Successful",
-                description: "User successfully signedin",
+                description: "User successfully signedin. \n If you are not redirected to Dashboard page, then please reload site",
             })
         }
 
