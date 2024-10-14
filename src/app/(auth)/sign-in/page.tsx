@@ -102,12 +102,15 @@ const Page = () => {
                 </div>
                 <div className=' mx-auto mt-10 text-[#64748b] flex flex-col justify-center items-center w-full z-50'>
                     {isLoading && <Loader className='animate-spin text-white h-28 w-28' />}
-                    <Image
-                        src="signinSvg.svg"
-                        alt='Singin'
-                        width={400}
-                        height={400} />
-                    <div className='mt-16 w-[30%]'>
+                    <div className=' max-md:px-10 block'>
+                        <Image
+                            src="signinSvg.svg"
+                            alt='Singin'
+                            width={400}
+                            height={400} />
+                    </div>
+
+                    <div className='mt-16 max-md:w-[80%] md:w-[30%]'>
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                                 <FormField

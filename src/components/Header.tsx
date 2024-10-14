@@ -16,12 +16,12 @@ import { IoMdLogOut } from "react-icons/io";
 
 export const Header = () => {
     return (
-        <div className='flex items-center '>
-            <div className='text-white fixed left-16'>
+        <div className='flex items-center max-md:justify-between '>
+            <div className='text-white md:fixed md:left-16 max-md:mr-3'>
                 <LiaUserSecretSolid className='h-16 w-16 text-slate-300' />
             </div>
             <FloatingDock
-                mobileClassName="translate-y-20" // only for demo, remove for production
+                mobileClassName="md:translate-y-20" // only for demo, remove for production
                 items={links}
             />
         </div>

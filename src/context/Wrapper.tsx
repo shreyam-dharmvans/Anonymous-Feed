@@ -11,7 +11,7 @@ const Wrapper = ({ children }: Readonly<{
 }>) => {
     return (
         <>
-            <div className="absolute top-10 left-[590px] flex justify-center z-50">
+            <div className="max-md:mt-10  md:absolute md:top-10 left-[590px] flex justify-center z-50">
                 <Header />
             </div>
             {children}

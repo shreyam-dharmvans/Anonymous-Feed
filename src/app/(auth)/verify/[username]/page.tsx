@@ -107,11 +107,13 @@ function InputOTPForm() {
             </div>
             <div className=' mx-auto mt-32 text-[#64748b] flex flex-col justify-center items-center w-full z-50'>
                 {isLoading && <Loader className='animate-spin text-white h-28 w-28' />}
-                <Image
-                    src="/verifyLogo.svg"
-                    alt='Singin'
-                    width={400}
-                    height={400} />
+                <div className='max-md:px-10'>
+                    <Image
+                        src="/verifyLogo.svg"
+                        alt='Singin'
+                        width={400}
+                        height={400} />
+                </div>
                 <div className='mt-16 w-[40%] flex flex-col items-center justify-center z-[70]'>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6 flex flex-col items-center text-white">
