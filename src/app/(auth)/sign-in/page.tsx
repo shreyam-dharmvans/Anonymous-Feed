@@ -72,11 +72,12 @@ const Page = () => {
 
         } else {
             // router.replace("/dashboard");
-            router.push('/dashboard')
+            //router.push('/dashboard')
             toast({
                 title: "SignIn Successful",
                 description: "User successfully signedin. \n If you are not redirected to Dashboard page, then please reload site",
             })
+            router.refresh();
         }
 
         setIsLoading(false);
